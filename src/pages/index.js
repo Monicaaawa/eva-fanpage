@@ -1,128 +1,71 @@
 import * as React from "react"
-import { Link } from "gatsby"
-import { StaticImage } from "gatsby-plugin-image"
+import Seo from "../components/seo";
+import OneLastKiss from "../audio/one-last-kiss.mp3";
+/*
+  https://github.com/goldfire/howler.js#documentation
+*/
+import { Howl } from 'howler'; 
+import note from "../images/note.png";
+import Layout from "../components/layout";
+import { StaticImage } from "gatsby-plugin-image";
 
-import Layout from "../components/layout"
-import Seo from "../components/seo"
-import * as styles from "../components/index.module.css"
+const sound = new Howl({
+  src: [ OneLastKiss ],
+  loop: true,
+  volume: 0.5
+});
 
-const links = [
-  {
-    text: "Tutorial",
-    url: "https://www.gatsbyjs.com/docs/tutorial",
-    description:
-      "A great place to get started if you're new to web development. Designed to guide you through setting up your first Gatsby site.",
-  },
-  {
-    text: "Examples",
-    url: "https://github.com/gatsbyjs/gatsby/tree/master/examples",
-    description:
-      "A collection of websites ranging from very basic to complex/complete that illustrate how to accomplish specific tasks within your Gatsby sites.",
-  },
-  {
-    text: "Plugin Library",
-    url: "https://www.gatsbyjs.com/plugins",
-    description:
-      "Learn how to add functionality and customize your Gatsby site or app with thousands of plugins built by our amazing developer community.",
-  },
-  {
-    text: "Build and Host",
-    url: "https://www.gatsbyjs.com/cloud",
-    description:
-      "Now you’re ready to show the world! Give your Gatsby site superpowers: Build and host on Gatsby Cloud. Get started for free!",
-  },
-]
+const Index = () => {
+  return (
+    <Layout>
+      <section id="content">
+        <div id="title">
+          <section className="flex">
+            <StaticImage src="https://occ-0-1123-360.1.nflxso.net/dnm/api/v6/LmEnxtiAuzezXBjYXPuDgfZ4zZQ/AAAABbwG-m7IraLErUf2tqSLBC8bjOQMCzqUmxhzRblVSvNpr-uJ-AA3EJGxlc8Qq3sJGOsia5cCZsCGlV_VDgbpOLr1xQSlmZMaLoXFdyLui8Tc.png?r=873"
+             alt="title" height="400px" placeholder="blurred"/>
+            <div id="player">
+              <img src={note} alt="note" width="50px" height="50px" onClick= {() => sound.play()} aria-hidden="true" />
+            </div>
+          </section>
 
-const samplePageLinks = [
-  {
-    text: "Page 2",
-    url: "page-2",
-    badge: false,
-    description:
-      "A simple example of linking to another page within a Gatsby site",
-  },
-  { text: "TypeScript", url: "using-typescript" },
-  { text: "Server Side Rendering", url: "using-ssr" },
-  { text: "Deferred Static Generation", url: "using-dsg" },
-]
+          <br></br>
 
-const moreLinks = [
-  { text: "Join us on Discord", url: "https://gatsby.dev/discord" },
-  {
-    text: "Documentation",
-    url: "https://gatsbyjs.com/docs/",
-  },
-  {
-    text: "Starters",
-    url: "https://gatsbyjs.com/starters/",
-  },
-  {
-    text: "Showcase",
-    url: "https://gatsbyjs.com/showcase/",
-  },
-  {
-    text: "Contributing",
-    url: "https://www.gatsbyjs.com/contributing/",
-  },
-  { text: "Issues", url: "https://github.com/gatsbyjs/gatsby/issues" },
-]
+          <div className="japanese">
+            さようなら、<br></br>全てのエヴァンゲリオン。
+          </div>
 
-const utmParameters = `?utm_source=starter&utm_medium=start-page&utm_campaign=default-starter`
+          <iframe width="550" height="275" src="https://www.youtube.com/embed/GZfuWMDEJpw" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 
-const IndexPage = () => (
-  <Layout>
-    <div className={styles.textCenter}>
-      <StaticImage
-        src="../images/example.png"
-        loading="eager"
-        width={64}
-        quality={95}
-        formats={["auto", "webp", "avif"]}
-        alt=""
-        style={{ marginBottom: `var(--space-3)` }}
-      />
-      <h1>
-        Welcome to <b>Gatsby!</b>
-      </h1>
-      <p className={styles.intro}>
-        <b>Example pages:</b>{" "}
-        {samplePageLinks.map((link, i) => (
-          <React.Fragment key={link.url}>
-            <Link to={link.url}>{link.text}</Link>
-            {i !== samplePageLinks.length - 1 && <> · </>}
-          </React.Fragment>
-        ))}
-        <br />
-        Edit <code>src/pages/index.js</code> to update this page.
-      </p>
-    </div>
-    <ul className={styles.list}>
-      {links.map(link => (
-        <li key={link.url} className={styles.listItem}>
-          <a
-            className={styles.listItemLink}
-            href={`${link.url}${utmParameters}`}
-          >
-            {link.text} ↗
-          </a>
-          <p className={styles.listItemDescription}>{link.description}</p>
-        </li>
-      ))}
-    </ul>
-    {moreLinks.map((link, i) => (
-      <React.Fragment key={link.url}>
-        <a href={`${link.url}${utmParameters}`}>{link.text}</a>
-        {i !== moreLinks.length - 1 && <> · </>}
-      </React.Fragment>
-    ))}
-  </Layout>
-)
+        </div>
 
-/**
- * Head export to define metadata for the page
- *
- * See: https://www.gatsbyjs.com/docs/reference/built-in-components/gatsby-head/
- */
+        <section id="intro">
+          <div className="overlay">
+            <div className="eva-heading">
+              <h1 class="eva-heading__title">
+                STORY
+              </h1>
+            </div>
+            <div style={{paddingLeft:"350px"}}>
+              In the year 2000, a global cataclysm known as Second Impact changed the world.<br></br>
+              The event annihilated Antarctica and shifted the planet's axis, 
+              resulting in catastrophic flooding and drastically altered climates worldwide.<br></br>
+              The ensuing destruction and global refugee crisis created such extreme unrest 
+              that nuclear exchanges broke out in mere days.<br></br>
+              By the time the dust finally settled, half of Earth's human population had perished.<br></br><br></br>
+              Fifteen years later, 14-year-old Shinji Ikari finds himself summoned to the fortress city 
+              of Tokyo-3 by his estranged father, Gendo, for a single purpose:<br></br>
+              to pilot a Humongous Mecha called an Evangelion in order to defend civilization 
+              from physics-defying monstrosities known as Angels.<br></br>
+              But can a young, damaged boy like Shinji bear the weight of humanity's survival?
+            </div>
+          </div>
+        </section>
+
+      </section>
+    </Layout>
+  )
+}
+
 export const Head = () => <Seo title="Home" />
 
-export default IndexPage
+export default Index;
