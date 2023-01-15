@@ -19,10 +19,10 @@ const Header = () => {
             <a href="/#intro">STORY</a>
           </div>
           <div>
-            <Link to="/characters/">CHARACTERS</Link>
+            <Link to="/characters">CHARACTERS</Link>
           </div>
           <div>
-            <Link to="/evangelions/">EVANGELIONS</Link>
+            <Link to="/evangelions">EVANGELIONS</Link>
           </div>
         </div>
       </div>
