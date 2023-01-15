@@ -1,5 +1,6 @@
 import React from "react"
 import { Link } from "gatsby"
+import { AnchorLink } from "gatsby-plugin-anchor-links";
 
 const Header = () => {
   return (
@@ -16,7 +17,7 @@ const Header = () => {
             <Link to="/">HOME</Link>
           </div>
           <div>
-            <a href="/#intro">STORY</a>
+            <AnchorLink to="/#intro" title="story">STORY</AnchorLink>
           </div>
           <div>
             <Link to="/characters">CHARACTERS</Link>
